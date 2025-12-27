@@ -438,3 +438,12 @@ body.dark .site-footer {
 }
 
 background-image: url("bilder/bg.jpg");
+.hdr-photo img{
+  display:block;
+  width:140px;
+  height:140px;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+
