@@ -34,8 +34,15 @@ body {
   flex-wrap: wrap;
 }
 
-/* Foto större */
-.hdr-photo img {
+/* ВАЖЛИВО: щоб фото не “зникало” через flex */
+.hdr-photo {
+  flex: 0 0 auto;
+}
+
+/* Фото */
+.hdr-photo img,
+.profile-photo {
+  display: block;
   width: 180px;
   height: 180px;
   object-fit: cover;
@@ -44,7 +51,16 @@ body {
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
 }
 
-/* Namn: större + mörk */
+/* Якщо фото не завантажилось — буде видно “кружок-заглушку” */
+html.photo-missing .hdr-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px dashed #683a68;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.10);
+}
+
+/* Namn */
 .hdr-meta h1 {
   margin: 0 0 0.25rem 0;
   font-size: 44px;
@@ -53,7 +69,7 @@ body {
   color: #31172f;
 }
 
-/* Roll: annan färg */
+/* Roll */
 .hdr-meta .role {
   margin: 0;
   font-size: 18px;
@@ -62,7 +78,7 @@ body {
   opacity: 1;
 }
 
-/* Links: mail/tel/stad */
+/* Links */
 .hdr-links {
   list-style: none;
   padding: 0;
@@ -123,10 +139,6 @@ body {
   background: transparent;
   color: #683a68;
   border-color: rgba(104, 58, 104, 0.45);
-}
-
-.btn-pill.ghost:hover {
-  opacity: 1;
 }
 
 /* =========================
@@ -226,10 +238,6 @@ body {
   font-weight: 650;
   font-size: 0.9rem;
   cursor: pointer;
-}
-
-.contact .copy-btn:hover {
-  background: #f3f5fb;
 }
 
 /* =========================
@@ -336,24 +344,6 @@ body {
   border: 1px solid #ffd6e7;
 }
 
-.chips .chip:hover {
-  filter: brightness(0.98);
-}
-
-/* =========================
-   LETTER PAGE
-========================= */
-.letter {
-  max-width: 860px;
-  margin: 0 auto;
-  font-size: 1.05rem;
-}
-
-.subtitle {
-  margin: 0;
-  opacity: 0.95;
-}
-
 /* =========================
    FOOTER
 ========================= */
@@ -367,37 +357,12 @@ body {
 }
 
 /* =========================
-   DARK MODE
-========================= */
-body.dark {
-  background: #0b1020;
-  color: #e8eefc;
-}
-
-body.dark .card {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: none;
-}
-
-body.dark .site-footer {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.08);
-  color: rgba(232, 238, 252, 0.75);
-}
-
-/* =========================
    PRINT
 ========================= */
 @media print {
   body {
     background: #ffffff;
     color: #000000;
-  }
-
-  .cv-header {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
   }
 
   .hdr-actions,
@@ -419,7 +384,8 @@ body.dark .site-footer {
    MOBILE
 ========================= */
 @media (max-width: 576px) {
-  .hdr-photo img {
+  .hdr-photo img,
+  .profile-photo {
     width: 140px;
     height: 140px;
   }
@@ -436,15 +402,3 @@ body.dark .site-footer {
     font-size: 14px;
   }
 }
-
-background-image: url("bilder/bg.jpg");
-.hdr-photo img{
-  display:block;
-  width:140px;
-  height:140px;
-  object-fit:cover;
-  border-radius:50%;
-}
-
-
-
