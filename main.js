@@ -62,3 +62,14 @@
     });
   }
 })();
+// main.js
+
+// År i footer
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// Print-knapp
+document.querySelectorAll("[data-print]").forEach((btn) => {
+  btn.addEventListener("click", () => window.print());
+});
+
